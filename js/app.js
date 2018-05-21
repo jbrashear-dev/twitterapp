@@ -1,7 +1,7 @@
 const express = require('express');
 const moment = require('moment');
 const Twit = require('twit')
-const config = require('./config.json');
+const config = require('./config.js');
 const T = new Twit(config)
 const app = express();
 let screenName;
@@ -20,7 +20,7 @@ let messages = []
 app.use('/static', express.static('../public'));
 app.set('views', '../views');
 app.set('view engine', 'pug');
-
+//get username and tweets from user object defined in config.js
 T.get('statuses/user_timeline', {count: 5}, (err, data, res)=>{
   data.forEach((tweet) => {
     screenName = tweet.user.screen_name;
@@ -34,7 +34,7 @@ T.get('statuses/user_timeline', {count: 5}, (err, data, res)=>{
     avitar = tweet.user.profile_image_url;
   })
 });
-
+//get friends list
 T.get('friends/list', {count: 5}, (err, data, res) => {
   data.users.forEach((friend) => {
     let followed = {};
@@ -44,7 +44,7 @@ T.get('friends/list', {count: 5}, (err, data, res) => {
     friends.push(followed);
   })
 })
-
+//get direct_messages ..... will need to be changed in the future to activity api
 T.get('direct_messages/events/list', {count: 5}, (err, data, res) => {
   data.events.forEach((message) => {
     let dm ={};
