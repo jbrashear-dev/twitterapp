@@ -4,6 +4,7 @@ const Twit = require('twit')
 const config = require('./config.js');
 const T = new Twit(config)
 const app = express();
+const path = require('path');
 let screenName;
 let avitar;
 let name;
@@ -17,8 +18,8 @@ let messageTime;
 let messageDate;
 let messages = []
 
-app.use('/static', express.static('../public'));
-app.set('views', '../views');
+app.use('/static', express.static(path.join(__dirname, '../public')));
+app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
 //get username and tweets from user object defined in config.js
 T.get('statuses/user_timeline', {count: 5}, (err, data, res)=>{
