@@ -17,6 +17,7 @@ let friends = [];
 let messageTime;
 let messageDate;
 let messages = []
+let tweets = [];
 
 app.use('/static', express.static(path.join(__dirname, '../public')));
 app.set('views', path.join(__dirname, '../views'));
@@ -24,16 +25,21 @@ app.set('view engine', 'pug');
 //get username and tweets from user object defined in config.js
 T.get('statuses/user_timeline', {count: 5}, (err, data, res)=>{
   data.forEach((tweet) => {
-    screenName = tweet.user.screen_name;
-    name = tweet.user.name;
-    tweetText = tweet.text;
+    let tw = {};
+    tw.screenName = tweet.user.screen_name;
+    tw.name = tweet.user.name;
+    tw.tweetText = tweet.text;
     let time = tweet.created_at;
-    tweetTime = moment(time, 'ddd MMM DD HH:mm:ss Z YYYY').format('ddd MMM DD YYYY HH:mm');
-    reTweet = tweet.retweet_count;
-    favTweet = tweet.favorite_count;
-    friendCount = tweet.user.friends_count;
-    avitar = tweet.user.profile_image_url;
+    console.log(time);
+    tw.tweetTime = moment(time, 'ddd MMM DD HH:mm:ss Z YYYY').format('ddd MMM DD YYYY HH:mm');
+    tw.reTweet = tweet.retweet_count;
+    tw.favTweet = tweet.favorite_count;
+    tw.friendCount = tweet.user.friends_count;
+    tw.avitar = tweet.user.profile_image_url;
+    tweets.push(tw);
+    console.log(tw.tweetTime);
   })
+  console.log(tweets);
 });
 //get friends list
 T.get('friends/list', {count: 5}, (err, data, res) => {
@@ -58,8 +64,7 @@ T.get('direct_messages/events/list', {count: 5}, (err, data, res) => {
 })
 
 app.get('/', (req,res) => {
-   res.render('index.pug', {screenName, name, avitar, tweetText, tweetTime, reTweet
-                            , favTweet, friendCount, friends, messages});
+   res.render('index.pug', {tweets, friends, messages});
  })
 
  app.use((req, res, next) =>{
