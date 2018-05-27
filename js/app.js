@@ -30,16 +30,13 @@ T.get('statuses/user_timeline', {count: 5}, (err, data, res)=>{
     tw.name = tweet.user.name;
     tw.tweetText = tweet.text;
     let time = tweet.created_at;
-    console.log(time);
     tw.tweetTime = moment(time, 'ddd MMM DD HH:mm:ss Z YYYY').format('ddd MMM DD YYYY HH:mm');
     tw.reTweet = tweet.retweet_count;
     tw.favTweet = tweet.favorite_count;
     tw.friendCount = tweet.user.friends_count;
     tw.avitar = tweet.user.profile_image_url;
     tweets.push(tw);
-    console.log(tw.tweetTime);
   })
-  console.log(tweets);
 });
 //get friends list
 T.get('friends/list', {count: 5}, (err, data, res) => {

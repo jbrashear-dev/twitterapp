@@ -1,25 +1,5 @@
-doctype html
-html(lang='en')
-  head
-    //
-      Basic Page Needs
-      ––––––––––––––––––––––––––––––––––––––––––––––––––
-    meta(charset='utf-8')
-    title Twitter Client
-    meta(name='description', content='')
-    meta(name='author', content='')
-    //
-      Mobile Specific Metas
-      ––––––––––––––––––––––––––––––––––––––––––––––––––
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    //
-      FONTS
-      ––––––––––––––––––––––––––––––––––––––––––––––––––
-    link(href='https://fonts.googleapis.com/css?family=Work+Sans:400,600', rel='stylesheet', type='text/css')
-    //
-      CSS
-      ––––––––––––––––––––––––––––––––––––––––––––––––––
-    link(rel='stylesheet', href='/static/css/global.css')
+extends layout.pug
+block content
   body
     header.circle--header
       .bounds
@@ -112,46 +92,6 @@ html(lang='en')
                       p @#{friend.screenName}
                   .circle--fluid--cell
                     a.button.button-text Unfollow
-            //- li
-            //-   .circle--fluid
-            //-     .circle--fluid--cell.circle--fluid--primary
-            //-       a.app--tweet--author
-            //-         .app--avatar(style='background-image: url(images/f-spore.png)')
-            //-           img(src='images/f-spore.png')
-            //-         h4 Jill Spore
-            //-         p @jillspore
-            //-     .circle--fluid--cell
-            //-       a.button.button-text Unfollow
-            //- li
-            //-   .circle--fluid
-            //-     .circle--fluid--cell.circle--fluid--primary
-            //-       a.app--tweet--author
-            //-         .app--avatar(style='background-image: url(images/f-spore.png)')
-            //-           img(src='images/f-spore.png')
-            //-         h4 Jill Spore
-            //-         p @jillspore
-            //-     .circle--fluid--cell
-            //-       a.button.button-text Unfollow
-            //- li
-            //-   .circle--fluid
-            //-     .circle--fluid--cell.circle--fluid--primary
-            //-       a.app--tweet--author
-            //-         .app--avatar(style='background-image: url(images/f-spore.png)')
-            //-           img(src='images/f-spore.png')
-            //-         h4 Jill Spore
-            //-         p @jillspore
-            //-     .circle--fluid--cell
-            //-       a.button Follow
-            //- li
-            //-   .circle--fluid
-            //-     .circle--fluid--cell.circle--fluid--primary
-            //-       a.app--tweet--author
-            //-         .app--avatar(style='background-image: url(images/f-spore.png)')
-            //-           img(src='images/f-spore.png')
-            //-         h4 Jill Spore
-            //-         p @jillspore
-            //-     .circle--fluid--cell
-            //-       a.button.button-text Unfollow
       .grid-33
         .app--section
           ul.app--message--list
@@ -166,24 +106,4 @@ html(lang='en')
                       img(src='static/images/m-spore.png')
                     //- p.app--message--text How are things?
                     p.app--message--timestamp #{message.messageTime} #{message.messageDate}
-                //- li.app--message--me
-                //-   .app--avatar(style='background-image: url(images/m-spore.png)')
-                //-     img(src='images/m-spore.png')
-                //-   p.app--message--text
-                //-     | Great! How about you? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                //-   p.app--message--timestamp 2 hours ago
-                //- li.app--message
-                //-   .app--avatar(style='background-image: url(images/f-spore.png)')
-                //-     img(src='images/f-spore.png')
-                //-   p.app--message--text Fantastic! You wanna grab lunch?
-                //-   p.app--message--timestamp 2 hours ago
-                //- li.app--message--me
-                //-   .app--avatar(style='background-image: url(images/m-spore.png)')
-                //-     img(src='images/m-spore.png')
-                //-   p.app--message--text Totes mcgotes. How about Mackey's?
-                //-   p.app--message--timestamp 1 hour ago
-                //- li.app--message
-                //-   .app--avatar(style='background-image: url(images/f-spore.png)')
-                //-     img(src='images/f-spore.png')
-                //-   p.app--message--text Aww yeah.. I'm craving a Triple Quarter Mack!
-                //-   p.app--message--timestamp 1 hour ago
+                
